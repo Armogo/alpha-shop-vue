@@ -1,14 +1,14 @@
 <template>  
     <div id="main-app">
-      <!--導覽列-->
+      <!-- nav -->
       <Navbar />  
 
-      <!--結帳主頁面-->
+      <!-- checkout -->
       <main id="main-content">
         <div class="container main-container ">
           <div class="main-grid">
             <!-- left content -->
-            <LeftContent 
+            <LeftContent
               :initial-user="user"
               :initial-cities="cities"
               @previous-step-clicked="onPreviousStepClicked"
@@ -28,7 +28,7 @@
       </main>
       <!-- footer -->
       <Footer />      
-    </div>  
+    </div>
 </template>
 
 <script>
