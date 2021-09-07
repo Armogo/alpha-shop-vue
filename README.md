@@ -14,7 +14,7 @@
 git clone https://github.com/Armogo/alpha-shop-vue.git
 ```
 
-2. 初始設定
+## 初始設定
 
 ```
 cd alpha-shop-vue  //切至專案資料夾
