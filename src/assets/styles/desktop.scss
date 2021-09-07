@@ -1,0 +1,204 @@
+#main-app {
+  min-width: 850px;
+
+  // navbar
+  .nav-container {    
+    .navbar-toggle {
+      display: none;
+    }
+    .header-nav {
+      position: relative;
+      top: 0;
+      display: flex;
+      flex-direction: row;      
+      height: 60px;
+      width: 100%;            
+      
+      .nav-left,
+      .nav-right {
+        .nav-list {
+          flex-direction: row;
+
+          .nav-item {
+            height: 0px;
+          }
+          
+          .nav-link {
+            font-size: 14px;
+            color: $light-black;
+            &:hover,
+            &:visit {
+              color: $gray;
+            }
+          }
+        }
+      }      
+
+      .nav-mid {
+        display: block;        
+        position: absolute;
+        left: 50%;        
+        width: 120px;
+        margin-top: 20px;
+      }
+
+      .nav-right {        
+        position: relative;
+        right: 1rem;
+      }
+    }
+    .box-shadow-menu,
+    .shop-logo {
+      display: none;
+    }
+  }
+
+  main {
+    .main-container {      
+      .main-grid {
+        display: grid;
+        grid-template: 1fr / 55% 5% 40%;   
+        margin-bottom: 48px;
+
+        // left content
+        .left-content {    
+          grid-row: 1 / 2;
+          grid-column: 1 / 2;    
+          
+          .stepper-panel {
+            
+            .stepper-container {        
+              display: flex;        
+
+              .step-part {
+                position: relative;          
+                
+                .step {            
+                  flex: 1;
+                  justify-content: center;
+                  
+                  .circle-container {
+                    height: 24px;
+                    width: 24px;
+                    margin: 0 5px 0 0;
+                    font-size: 12px;
+                    padding: 2.5px 0px;
+                  }
+                  .connect-line {                              
+                    height: 2px;              
+                    left: calc(-50% + 3.5rem);
+                    right: calc(50% + 3.5rem);      
+                  }
+                  .label-container {
+                    display: inline;
+                  }           
+                }
+                &.checked {
+                  .circle-container {            
+                    padding-top: unset;            
+                  }
+                }      
+              }
+            }
+          }
+
+          .form-panel {
+            .form-container {
+              #a-form {
+                .location {
+                  display: flex;
+
+                  .city {
+                    width: 30%;
+                    margin-right: 1rem;
+                  }
+                  .address {
+                    width: 70%;
+                  }
+                }
+            
+                .control-panel {      
+                  grid-column: 1 / 2;
+                  height: 20px;
+                  bottom: 50px;   
+                  
+                  .btn-primary {
+                    position: absolute;
+                    right: 0px;
+                    width: 174px;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        // right content
+        .right-content {    
+          grid-row: 1 / 2;
+          grid-column: 3 / 4;
+          margin-top: 56px;    
+          .card {
+            .shopping-cart {
+              display: inline;
+            }
+            .shopping-list {
+              .item {
+                .count-panel {            
+                  flex-direction: row;
+                  align-items: flex-start;
+                  margin-left: 1rem;             
+                  .item-cost {              
+                    padding-top: 2.5px;
+                    margin-left: 6px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }    
+    }
+  }
+        
+  // footer
+  .footer {
+    display: flex;
+    background-color: $light-gray;
+    text-align: center;
+    height: 284px;
+    .footer-content {
+      width: 100%;
+      padding: 20px;            
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 64px;
+      .nav {
+        font-size: 24px;
+        color: $light-black;
+        .nav-list {
+          margin-top: 20px;
+          .nav-link {
+            font-size: 16px;
+            color: $light-black;
+            &:hover,
+            &:visit {
+              color: $gray;
+            }
+          }
+        }
+      }
+      .logo {
+        margin-top: 50px;
+        height: 31px;
+      }
+      .contact {
+        justify-content: center;
+        .nav-item {
+          margin: 10px;
+        }
+      }
+    }
+  }
+}

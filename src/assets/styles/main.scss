@@ -1,0 +1,13 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css");
+
+// reset CSS
+@import "./reset.scss";
+
+/* style start */
+// mobile
+@import "./mobile.scss";
+
+// desktop style
+@media screen and (min-width: 530px) {
+  @import "./desktop.scss";  
+}
