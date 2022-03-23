@@ -2,21 +2,21 @@
   <div class="form-panel">
     <div class="container form-container">
       <!-- form 1 -->
-      <Form1 
+      <Form1
         v-if="initialUser.formStep === 1"
         :initial-user="initialUser"
         :initial-cities="initialCities"
         @next-step-clicked="onNextStepClicked"
       />
       <!-- form 2 -->
-      <Form2 
-        v-if="initialUser.formStep === 2" 
+      <Form2
+        v-if="initialUser.formStep === 2"
         :initial-user="initialUser"
         @previous-step-clicked="onPreviousStepClicked"
-        @next-step-clicked="onNextStepClicked"        
+        @next-step-clicked="onNextStepClicked"
       />
       <!-- form 3 -->
-      <Form3 
+      <Form3
         v-if="initialUser.formStep === 3"
         :initial-user="initialUser"
         @previous-step-clicked="onPreviousStepClicked"
@@ -27,10 +27,10 @@
 </template>
 
 <script>
-import Form1 from './Form-1.vue';
-import Form2 from './Form-2.vue';
-import Form3 from './Form-3.vue';
-import {fetchUser} from '../utils/mixins'
+import Form1 from "./Form-1.vue";
+import Form2 from "./Form-2.vue";
+import Form3 from "./Form-3.vue";
+import { fetchUser } from "../utils/mixins";
 
 export default {
   mixins: [fetchUser],
@@ -47,7 +47,7 @@ export default {
     initialCities: {
       type: Array,
       required: true,
-    }
+    },
   },
   data() {
     return {
@@ -57,15 +57,15 @@ export default {
   created() {
     this.fetchUser();
   },
-  methods: {    
-    onPreviousStepClicked(formdata) {      
+  methods: {
+    onPreviousStepClicked(formdata) {
       this.user = {
-        ... this.user,
-        ... formdata,
-      }
+        ...this.user,
+        ...formdata,
+      };
       if (this.user.formStep > 0) {
         this.user.formStep -= 1;
-      }      
+      }
       this.$emit("previous-step-clicked", this.user);
     },
     onNextStepClicked(formdata) {
@@ -75,7 +75,7 @@ export default {
       };
       if (this.user.formStep < 3) {
         this.user.formStep += 1;
-      }      
+      }
       this.$emit("next-step-clicked", this.user);
     },
     onFinalStepClicked(formdata) {
@@ -84,7 +84,7 @@ export default {
         ...formdata,
       };
       this.$emit("final-step-clicked", this.user);
-    },    
+    },
   },
 };
 </script>

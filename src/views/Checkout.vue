@@ -1,41 +1,41 @@
-<template>  
-    <div id="main-app">
-      <!-- nav -->
-      <Navbar />  
+<template>
+  <div id="main-app">
+    <!-- nav -->
+    <Navbar />
 
-      <!-- checkout -->
-      <main id="main-content">
-        <div class="container main-container ">
-          <div class="main-grid">
-            <!-- left content -->
-            <LeftContent
-              :initial-user="user"
-              :initial-cities="cities"
-              @previous-step-clicked="onPreviousStepClicked"
-              @next-step-clicked="onNextStepClicked"      
-              @final-step-clicked="handleSubmit"
-            />
+    <!-- checkout -->
+    <main id="main-content">
+      <div class="container main-container">
+        <div class="main-grid">
+          <!-- left content -->
+          <LeftContent
+            :initial-user="user"
+            :initial-cities="cities"
+            @previous-step-clicked="onPreviousStepClicked"
+            @next-step-clicked="onNextStepClicked"
+            @final-step-clicked="handleSubmit"
+          />
 
-            <!-- right content -->
-            <RightContent 
-              :initial-user="user"
-              :initial-items="items"
-              @item-add-one="onItemAdded"
-              @item-reduce-one="onItemReduced"
-            />
-          </div>
+          <!-- right content -->
+          <RightContent
+            :initial-user="user"
+            :initial-items="items"
+            @item-add-one="onItemAdded"
+            @item-reduce-one="onItemReduced"
+          />
         </div>
-      </main>
-      <!-- footer -->
-      <Footer />      
-    </div>
+      </div>
+    </main>
+    <!-- footer -->
+    <Footer />
+  </div>
 </template>
 
 <script>
-import Navbar from "../components/Navbar.vue"
-import LeftContent from "../components/LeftContent.vue"
-import RightContent from "../components/RightContent.vue"
-import Footer from "../components/Footer.vue"
+import Navbar from "../components/Navbar.vue";
+import LeftContent from "../components/LeftContent.vue";
+import RightContent from "../components/RightContent.vue";
+import Footer from "../components/Footer.vue";
 
 export default {
   name: "Checkout",
@@ -43,7 +43,7 @@ export default {
     Navbar,
     LeftContent,
     RightContent,
-    Footer
+    Footer,
   },
   data() {
     return {
@@ -109,45 +109,45 @@ export default {
     // Left Content
     onPreviousStepClicked(formdata) {
       this.user = {
-        ... this.user,
-        ... formdata
-      }      
+        ...this.user,
+        ...formdata,
+      };
     },
     onNextStepClicked(formdata) {
       this.user = {
-        ... this.user,
-        ... formdata
-      }      
+        ...this.user,
+        ...formdata,
+      };
     },
     handleSubmit(formdata) {
       this.user = {
-        ... this.user,
-        ... formdata
-      }
+        ...this.user,
+        ...formdata,
+      };
 
-      this.totalPrice()
+      this.totalPrice();
       // 送出結帳資料
       // console.log(this.user)
-      const { 
-        prefix, 
-        name, 
-        phone, 
-        email, 
-        city, 
-        address, 
-        id, 
-        delivery, 
-        payerName, 
-        cardNumber, 
-        goodThru, 
-        CVC, 
-        totalPrice
-      } = this.user
+      const {
+        prefix,
+        name,
+        phone,
+        email,
+        city,
+        address,
+        id,
+        delivery,
+        payerName,
+        cardNumber,
+        goodThru,
+        CVC,
+        totalPrice,
+      } = this.user;
 
       window.alert(`
         Yeaaah you made a successful purchase💖
 
-        稱謂: ${prefix === "woman" ? "女士" : "先生" }
+        稱謂: ${prefix === "woman" ? "女士" : "先生"}
         姓名: ${name}
         電話: ${phone}
         email: ${email}
@@ -160,33 +160,33 @@ export default {
         有效日期: ${goodThru}
         CVC: ${CVC}       
         總價格: ${totalPrice}
-      `)
+      `);
     },
     // Right Content
     onItemAdded(id) {
-      this.items.map(item => {
-        if(item.id === id) {
-          item.amount += 1
+      this.items.map((item) => {
+        if (item.id === id) {
+          item.amount += 1;
         }
-      })
+      });
     },
     onItemReduced(id) {
-      this.items.map(item => {
-        if(item.id === id && item.amount > 0) {
-          item.amount -= 1
+      this.items.map((item) => {
+        if (item.id === id && item.amount > 0) {
+          item.amount -= 1;
         }
-      })
+      });
     },
     totalPrice() {
-      let total = 0
+      let total = 0;
 
-      this.items.map(item => {
-        total += item.amount * item.price
-      })
-      total += Number(this.user.delivery)
+      this.items.map((item) => {
+        total += item.amount * item.price;
+      });
+      total += Number(this.user.delivery);
 
-      this.user.totalPrice = total
-    }
-  },  
+      this.user.totalPrice = total;
+    },
+  },
 };
 </script>

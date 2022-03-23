@@ -8,15 +8,10 @@
           <div class="form-row gender">
             <label for="prefix">稱謂</label>
             <div class="select-wrapper">
-              <select 
-                name="a-type"
-                id="prefix" 
-                required 
-                v-model="user.prefix"                
-              >
+              <select name="a-type" id="prefix" required v-model="user.prefix">
                 <option value="" disabled>稱謂</option>
                 <option value="man">先生</option>
-                <option value="woman">女士</option>                
+                <option value="woman">女士</option>
               </select>
             </div>
           </div>
@@ -89,31 +84,28 @@
       </div>
     </div>
     <!-- button control -->
-    <div id="btn-control" class="control-panel">      
-      <button
-        class="btn btn-primary ml-4"
-        @click.stop.prevent="nextStep"
-      >      
-      下一步 &#8594;
+    <div id="btn-control" class="control-panel">
+      <button class="btn btn-primary ml-4" @click.stop.prevent="nextStep">
+        下一步 &#8594;
       </button>
     </div>
   </form>
 </template>
 
 <script>
-import {fetchUser} from '../utils/mixins'
+import { fetchUser } from "../utils/mixins";
 
 export default {
   mixins: [fetchUser],
   props: {
     initialUser: {
       type: Object,
-      required: true
+      required: true,
     },
     initialCities: {
       type: Array,
-      requred: true
-    }
+      requred: true,
+    },
   },
   data() {
     return {
@@ -129,20 +121,18 @@ export default {
     };
   },
   created() {
-    this.fetchCities()
-    this.fetchUser()
+    this.fetchCities();
+    this.fetchUser();
   },
   methods: {
     fetchCities() {
-      this.cities = [
-        ...this.initialCities
-      ]
+      this.cities = [...this.initialCities];
     },
     nextStep() {
-      const {prefix, name, phone, email, city, address} = this.user
+      const { prefix, name, phone, email, city, address } = this.user;
 
       if (!prefix || !name || !phone || !email || !city || !address) {
-        return window.alert("請填寫所有欄位")
+        return window.alert("請填寫所有欄位");
       }
       this.$emit("next-step-clicked", this.user);
     },

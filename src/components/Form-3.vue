@@ -16,7 +16,7 @@
         <!-- card number -->
         <div class="form-row card-number">
           <label for="">卡號</label>
-          <input            
+          <input
             type="text"
             placeholder="1111 2222 3333 4444"
             pattern="\d{4} \d{4}"
@@ -28,7 +28,7 @@
           <!-- good thru -->
           <div class="form-row date">
             <label for="">有效日期</label>
-            <input              
+            <input
               type="text"
               placeholder="MM/YY"
               pattern="\d{2}\/\d{2}"
@@ -64,15 +64,15 @@
 </template>
 
 <script>
-import {fetchUser} from '../utils/mixins'
+import { fetchUser } from "../utils/mixins";
 
 export default {
   mixins: [fetchUser],
   props: {
     initialUser: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
@@ -85,9 +85,9 @@ export default {
     };
   },
   created() {
-    this.fetchUser()
+    this.fetchUser();
   },
-  methods: {    
+  methods: {
     previousStep() {
       this.$emit("previous-step-clicked", this.user);
     },
@@ -96,7 +96,7 @@ export default {
 
       if (!payerName || !cardNumber || !goodThru || !CVC) {
         return window.alert("請填寫所有欄位");
-      };
+      }
       this.$emit("final-step-clicked", this.user);
     },
   },
